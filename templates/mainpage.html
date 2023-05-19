@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'cdnlines.html'%}
+    <title>Main Page</title>
+    <style>
+        a:hover{
+            box-shadow: 0px 0px 10px azure, 0px 0px 40px skyblue,0px 0px 80px whitesmoke;
+        } 
+    </style>
+</head>
+<body style="background-image:url(/static/images/nth.jpg)">
+   <div class="container-fluid">
+    <h1 class="display-2 text-center font-weight-bold text-slugify">Welcom TO Main Page</h1> 
+    <div class="jumbotron text-center bg-dark"> 
+        <a href="{% url 'hyderabad'%}"  class="btn btn-primary btn-lg mr-5">Hyderabad</a>
+        <a href="{% url 'bangalore'%}"  class="btn btn-danger btn-lg  mr-5">Bangalore</a> 
+        <a href="{% url 'chennai'%}"  class="btn btn-success btn-lg  mr-5">Chennai</a> 
+        <a href="{% url 'pune'%}"  class="btn btn-warning btn-lg ">Pune</a>   
+    </div>
+   </div>
+</body>
+</html>

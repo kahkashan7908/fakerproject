@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'cdnlines.html' %}
+    <title>Main Page</title>
+    <style>
+        h1{
+            color:rgb(49, 13, 49) ;
+            text-shadow: 0px 0px 5px rgb(161, 163, 157);
+            font-family: Arial;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <h1 class="text-center mt-1 display-2">Welcome To Employee Data Page</h1>
+    <div class="text-center">
+        {% if data %}
+        <table class="table table-bordered table-hover">
+            <thead class="text-bg-dark">
+                <tr>
+                    <th>id</th>
+                    <th>Fisrt Nmae</th>
+                    <th>Last Name</th>
+                    <th>Salary</th>
+                    <th>Company</th>
+                    <th>Location</th>
+                    <th>Mobile</th>
+                    <th>Email Id</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.last_name}}</td>
+                    <td>{{i.salary}}</td>
+                    <td>{{i.company}}</td>
+                    <td>{{i.location}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h1 class="text-center">Data is not available</h1>
+        {% endif %}
+    </div>
+</body>
+</html>

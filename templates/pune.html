@@ -1,0 +1,90 @@
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'cdnlines.html' %}
+    <title>Pune Employee </title>
+</head>
+<body>
+    {% include 'navbar.html'%}
+   <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <a href="{% url 'chennai' %}" class="btn btn-sm btn-outline-primary mt-3">previous page</a>   
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-center mt-1 display-3 font-weight-bold text-warning">Pune Famous Places</h1>  
+        </div>
+        <div class="col-md-2 text-right">
+            <a href="mainpage" class="btn btn-sm btn-outline-warning mt-3">go next page</a>
+        </div>
+    </div>
+   
+    <div class="container fluid">
+        <div class="row text-center">
+           <div class="col-md-4">
+               <img src="{% static 'images/p1.jpg' %}" style="width:100%; height:100%; border-radius:50%;" class="img-thumbnail">
+           </div>
+           <div class="col-md-4">
+               <img src="{% static 'images/p2.jpg' %}" style="width:100%; height:100%; border-radius:10%;" class="img-thumbnail">
+           </div>
+           <div class="col-md-4">
+               <img src="{% static 'images/p3.jpg' %}" style="width:100%; height:100%; border-radius:50%;" class="img-thumbnail">
+           </div>
+
+        </div>
+   </div>
+    <h1 class="text-center mt-1 display-3 font-weight-bold text-dark">Pune Employees Informations</h1>
+     <!-- sereching company form -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3 offset-4 col-4">
+        <input type="text" class="form-control" placeholder="Enter company Name" name="com">
+        <div class="input-group-append">
+          <button class="btn btn-warning" type="submit">Search</button>  
+         </div>
+        </div>
+       </form>
+    <div class="text-center">
+        <!-- displaying pune employee data  -->
+        {% if puneData %}
+        <table class="table table-bordered table-hover">
+            <thead class="bg-warning">
+                <tr>
+                    <th>id</th>
+                    <th>Fisrt Nmae</th>
+                    <th>Last Name</th>
+                    <th>Salary</th>
+                    <th>Company</th>
+                    <th>Location</th>
+                    <th>Mobile</th>
+                    <th>Email Id</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in puneData %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.last_name}}</td>
+                    <td>{{i.salary}}</td>
+                    <td>{{i.company}}</td>
+                    <td>{{i.location}}</td>
+                    <td>{{i.mobile}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h1 class="text-center">Data is not available</h1>
+        {% endif %}
+    </div>
+
+   </div>
+</body>
+</html>
